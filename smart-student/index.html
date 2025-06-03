@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartStudent - Register Student</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>SmartStudent</h1>
+    <p>Register a New Student</p>
+  </header>
+  <nav class="navbar">
+    <a href="index.html">Register Student</a>
+    <a href="students.html">View Students</a>
+  </nav>
+  <main>
+    <form id="studentForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">--Select Gender--</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="course">Course:</label>
+      <input type="text" id="course" name="course" required />
+
+      <label for="date">Date Registered:</label>
+      <input type="date" id="date" name="date" required />
+
+      <button type="submit">Register Student</button>
+    </form>
+
+    <div id="confirmation" class="hidden">Student registered successfully!</div>
+  </main>
+
+  <script type="module" src="./js/form.js"></script>
+</body>
+</html>
