@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartStudent</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+  </head>
+  <body>
+    <!-- ✅ Navigation Bar -->
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">SmartStudent</h1>
+        <ul class="nav-links">
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="detail.html">Details</a></li>
+        <li><a href="edit.html">Edit Details</a></li>
+        <li><a href="search.html">Search</a></li>
+      </ul>
+      </div>
+    </nav>
+
+    <!-- ✅ Main Content -->
+    <main class="container">
+      <div class="card">
+        <h2>Welcome, Admin!</h2>
+        <p>Welcome to the Global Education Center</p>
+        <button onclick="location.href='register.html'">Register Student</button>
+        <button onclick="location.href='students.html'">Search Student</button>
+        <p>Total Students: <span id="totalCount">0</span></p>
+        <!-- HTML for Quote Section -->
+        <div class="quote-card">
+          <p id="quote">Loading quote...</p>
+          <p id="author" style="text-align: right; font-style: italic;"></p>
+        </div>
+      </div>
+    </main>
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>
