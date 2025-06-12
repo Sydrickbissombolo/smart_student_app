@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartStudent</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+</head>
+<body>
+  <!-- ✅ CLEAN NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">SmartStudent</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="detail.html">Details</a></li>
+        <li><a href="edit.html">Edit Details</a></li>
+        <li><a href="search.html" class="active">Search</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ✅ MAIN CONTENT -->
+  <main class="container">
+    <h2>Search Students</h2>
+    <input type="text" id="searchInput" placeholder="Type student name..." />
+
+    <div id="results" class="card-container"></div>
+    <p id="noResults" class="hidden">No matching students found.</p>
+  </main>
+
+  <script src="./js/search.js"></script>
+</body>
+</html>

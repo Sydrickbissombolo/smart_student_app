@@ -1,86 +1,66 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const tableBody = document.querySelector("#studentTable tbody");
-  const searchInput = document.getElementById("searchInput");
-  const noResults = document.getElementById("noResults");
+document.addEventListener('DOMContentLoaded', () => {
+  const studentTableBody = document.querySelector('#studentTable tbody');
+  const searchInput = document.getElementById('searchInput');
+  const noResults = document.getElementById('noResults');
 
-  function getStudents() {
-    return JSON.parse(localStorage.getItem("students")) || [];
-  }
+  let students = JSON.parse(localStorage.getItem('students')) || [];
 
-  function displayStudents(students) {
-    tableBody.innerHTML = "";
+  // Render all students on load
+  renderStudents(students);
 
-    if (students.length === 0) {
-      noResults.classList.remove("hidden");
+  // Search functionality
+  searchInput.addEventListener('input', () => {
+    const searchText = searchInput.value.toLowerCase();
+    const filteredStudents = students.filter(student =>
+      student.fullName.toLowerCase().includes(searchText)
+    );
+
+    renderStudents(filteredStudents);
+  });
+
+  function renderStudents(data) {
+    studentTableBody.innerHTML = '';
+
+    if (data.length === 0) {
+      noResults.classList.remove('hidden');
       return;
     } else {
-      noResults.classList.add("hidden");
+      noResults.classList.add('hidden');
     }
 
-    students.forEach(student => {
-      const row = document.createElement("tr");
+    data.forEach((student, index) => {
+      const row = document.createElement('tr');
+
       row.innerHTML = `
-        <td>${student.fullName}</td>
-        <td>${student.gender}</td>
-        <td>${student.age}</td>
-        <td>${student.phone}</td>
-        <td>${student.course}</td>
-        <td>${student.date}</td>
+        <td>${student.fullName || ''}</td>
+        <td>${student.gender || ''}</td>
+        <td>${student.age || ''}</td>
+        <td>${student.phone || ''}</td>
+        <td>${student.address || ''}</td>
+        <td>${student.religionClass || ''}</td>
+        <td>${student.englishClass || ''}</td>
+        <td>${student.fatherName || ''}</td>
+        <td>${student.motherName || ''}</td>
+        <td>${student.emergencyPhone || ''}</td>
         <td>
-          <button class="edit-btn" data-id="${student.id}">Edit</button>
-          <button class="delete-btn" data-id="${student.id}">Delete</button>
+          <button onclick="viewStudent(${index})">View</button>
+          <button onclick="editStudent(${index})">Edit</button>
         </td>
       `;
-      tableBody.appendChild(row);
-    });
 
-    // ✅ Call this to make buttons work after rendering
-    attachEventListeners();
-  }
-
-  function handleSearch() {
-    const searchText = searchInput.value.toLowerCase();
-    const students = getStudents();
-    const filtered = students.filter(s =>
-      s.fullName.toLowerCase().includes(searchText)
-    );
-    displayStudents(filtered);
-  }
-
-  function handleDelete(id) {
-    let students = getStudents();
-    students = students.filter(student => student.id != id);
-    localStorage.setItem("students", JSON.stringify(students));
-    displayStudents(students);
-  }
-
-  function handleEdit(id) {
-    localStorage.setItem("editStudentId", id);
-    window.location.href = "edit.html";
-  }
-
-  function attachEventListeners() {
-    const editButtons = document.querySelectorAll(".edit-btn");
-    const deleteButtons = document.querySelectorAll(".delete-btn");
-
-    editButtons.forEach(button => {
-      button.addEventListener("click", (e) => {
-        const id = e.target.dataset.id;
-        handleEdit(id);
-      });
-    });
-
-    deleteButtons.forEach(button => {
-      button.addEventListener("click", (e) => {
-        const id = e.target.dataset.id;
-        handleDelete(id);
-      });
+      studentTableBody.appendChild(row);
     });
   }
 
-  // Initial load
-  displayStudents(getStudents());
+  // Redirect to detail.html with selected student index
+  window.viewStudent = (index) => {
+    localStorage.setItem('selectedStudentIndex', index);
+    window.location.href = 'detail.html';
+  };
 
-  // Live search
-  searchInput.addEventListener("input", handleSearch);
+  // Redirect to edit.html with selected student index
+  window.editStudent = (index) => {
+    localStorage.setItem('selectedStudentIndex', index);
+    window.location.href = 'edit.html';
+  };
 });

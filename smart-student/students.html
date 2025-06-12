@@ -2,42 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartStudent - Student List</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartStudent</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
 </head>
 <body>
-  <header>
-    <h1>SmartStudent</h1>
-    <p>All Registered Students</p>
-  </header>
+
+  <!-- ✅ Navbar -->
   <nav class="navbar">
-    <a href="index.html">Register Student</a>
-    <a href="students.html">View Students</a>
+    <div class="container">
+      <h1 class="logo">SmartStudent</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="students.html" class="active">Students</a></li>
+        <li><a href="detail.html">Details</a></li>
+        <li><a href="edit.html">Edit Details</a></li>
+        <li><a href="search.html">Search</a></li>
+      </ul>
+    </div>
   </nav>
-  <main>
-    <input type="text" id="searchInput" placeholder="Search by name..." />
 
-    <table id="studentTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Age</th>
-          <th>Phone</th>
-          <th>Course</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Student rows will go here -->
-      </tbody>
-    </table>
+  <!-- ✅ Student List Section -->
+  <div class="container">
+    <div class="card">
+      <h2>Students</h2>
 
-    <div id="noResults" class="hidden">No students found.</div>
-  </main>
+      <!-- 🔍 Search Bar -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search student by name..." />
+      </div>
 
-  <script type="module" src="./js/list.js"></script>
+      <!-- 📋 Table -->
+      <div class="responsive-table">
+        <table id="studentTable">
+          <thead>
+            <tr>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Religion Class</th>
+            <th>EnglishConnect</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Emergency Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody>
+            <!-- Students will be dynamically inserted here -->
+          </tbody>
+        </table>
+        <p id="noResults" class="hidden">No students found.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/list.js"></script>
 </body>
 </html>
